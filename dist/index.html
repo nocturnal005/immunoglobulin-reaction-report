@@ -185,6 +185,47 @@
   a.tel:hover { border-bottom-color: var(--accent); }
   .pagefoot a.tel, .flag-alert a.tel, .sameday a.tel { color: inherit; border-bottom-color: currentColor; }
 
+  .howto {
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 0 0 16px;
+  }
+  .howto h2 { margin: 0 0 8px; font-size: 18px; }
+  .howto ul { margin: 0; padding-left: 22px; }
+  .howto li { margin-bottom: 6px; }
+
+  .qr-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    background: var(--accent-tint);
+    border: 1.5px solid var(--accent-line);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin: 0 0 22px;
+  }
+  .qr-block img {
+    width: 132px;
+    height: 132px;
+    flex: 0 0 auto;
+    background: #fff;
+    border: 1px solid var(--accent-line);
+    border-radius: 8px;
+    padding: 7px;
+  }
+  .qr-block .qr-text { flex: 1 1 260px; min-width: 0; }
+  .qr-block h2 { margin: 0 0 6px; font-size: 18px; }
+  .qr-block p { margin: 0 0 8px; font-size: 16px; color: var(--muted); }
+  .qr-block .qr-url {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
   .note { margin: 0 0 26px; font-size: 15px; color: var(--muted); }
 
   .card {
@@ -401,7 +442,7 @@
     body { font-size: 12pt; }
     .skip, .actions, .review-actions, .next-box, #status, .note, .fine, footer.pagefoot { display: none !important; }
     .card { break-inside: avoid; border-color: #BBBBBB; }
-    body.reviewed form, body.reviewed .urgent, body.reviewed .sameday, body.reviewed .lede, body.reviewed .routed { display: none !important; }
+    body.reviewed form, body.reviewed .urgent, body.reviewed .sameday, body.reviewed .lede, body.reviewed .routed, body.reviewed .howto, body.reviewed .qr-block { display: none !important; }
     body.reviewed #review { display: block !important; }
     textarea { min-height: 60px; }
   }
@@ -462,6 +503,29 @@
 
   <p class="note">Your answers are saved on this device as you type, so you can pause and come
     back. Nothing is sent anywhere until you choose to send it.</p>
+
+  <section class="howto" aria-labelledby="howto-h">
+    <h2 id="howto-h">How to fill in and send this form</h2>
+    <ul>
+      <li>Have your product box or vial label to hand &mdash; we need the batch number from it.</li>
+      <li>Fill in as much as you can. If you are not sure of an answer, leave it blank rather
+        than delay sending it.</li>
+      <li>Your answers save as you type, so you can stop and come back to them.</li>
+      <li>When you have finished, press <strong>Review my answers</strong> at the bottom, then
+        email the report to us.</li>
+    </ul>
+  </section>
+
+  <section class="qr-block" aria-labelledby="qr-h">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA9QAAAPUAQMAAAB2GuPHAAAABlBMVEULa3D///9Kw4neAAAEiElEQVR42u3dQW4bMQwFUKEXmPvfUjeYpijSsURSTscygqLPC6NNMn4Lbz4okWznt716Y7PZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWaz2Ww2+zzb/Dp+/ezIf5E/8fF6/MXq2Q/7R/u+F5vNZrPZbPa/Yg957XiMclfcCpFuCnLH7+T3+Xn92YfKa2w2m81ms9n389qUyK4cNv1xiGWfUe2xyHZUHyqvsdlsNpvNZm/Ka4u3obQW6ms9r8PJa2w2m81ms9lvyGtXQe0xoJ1jCW64q/asaCevsdlsNpvNZm+7vzblsOsUdCioTUEuRDr319hsNpvNZrN35LVW9Ye+8qY/lM1ms9lsNntTXitfU33tcZ7HlciOsengCKW1OEvE981ms9lsNpt9J68VJ5nTn0xX16YT1GfnpvIam81ms9ls9kv316ZGzyxz5dnsejbGt+Y8lM1ms9lsNntXf2iYutbHtzPJdWfIZlN9LdTr5DU2m81ms9nsG/0GZfBqy9UGRQfomObmgbu+bzabzWaz2ew756FTvurJyejxpSfCkWmX19hsNpvNZrM39huEO21lB2iZ5lrSdCCvsdlsNpvNZt/Paz30fS6G5k6zcXu+XTQ0Heg3YLPZbDabzd40LzfEreLEM6S0nj9rvwGbzWaz2Wz2jvPQ8sQzBLk2bg0txnuUp6XyGpvNZrPZbPb9/QZZSlvcVetjwmvLS2zyGpvNZrPZbPbr/QbhJLPceRCHdeT/cn+NzWaz2Ww2+13311qy/j1W0PIZH325o1ReY7PZbDabzb41LzfbOJVtq5oqcm1sFz2T7aL2UbHZbDabzWZvmpebD/UoRnmEuR9HMh9EXmOz2Ww2m83e2W+QldHa2BCa3WkrZ61NT8hrbDabzWaz2a/U12JTZ7ZiqlxKtfiZ+hqbzWaz2Wz2jv0GqzJa/taSte59HANiXi6bzWaz2Wz2tn6DOOm2zePYihXu2Yi21coq3zebzWaz2Wz239fXwl214g5am9e/x/7QcGutOw9ls9lsNpvN3lNfW6ev6XJa6ABtSVup+WtsNpvNZrPZ2/dRLbaBXtWy7KN62GoQnpXX2Gw2m81ms1/vNwitoa3aEJotPuh/Pr47D2Wz2Ww2m83eOM9jCl6P/235AWiIdC1ZNjq1LshrbDabzWaz2XfPQ8vpHGH31NMd8FmnqLzGZrPZbDabvW1ebratoFXzPBYDcmOrqbzGZrPZbDabvWMfVbZsqkxuWUNouOJmvwGbzWaz2Wz26/M82lgUy0pmXwpt5R4E9TU2m81ms9ns189Ds4LaWa1wb3PTQbFiNByKymtsNpvNZrPZt/pDW37fLHSKTssQWrJndILMX2Oz2Ww2m83entcWhbJpL/zTTQf2G7DZbDabzWa/q76WbxI9kwm7xay1Yiab75vNZrPZbDZ7w/214ogzi3nZ5NxsUZW8xmaz2Ww2m723P7Ro78w/Kvyr562m8hqbzWaz2Wz2jvlr73x1NpvNZrPZbDabzWaz2Ww2m81ms9lsNpvNZrPZbDabzWb/v/ZP2uEMQBfXywQAAAAASUVORK5CYII="
+         alt="QR code that opens this reaction report form">
+    <div class="qr-text">
+      <h2 id="qr-h">Open this on your phone</h2>
+      <p>Scan this code with your phone camera to carry on filling the form there &mdash; handy
+        if you are on a computer now, or if you want to send the form to someone helping you.</p>
+      <p class="qr-url">immunoglobulin-reaction-report.vercel.app</p>
+    </div>
+  </section>
 
   <form id="report-form" novalidate>
 
