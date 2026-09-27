@@ -423,6 +423,68 @@
 
   footer.pagefoot { margin-top: 8px; font-size: 14px; color: var(--muted); }
 
+  /* ---------- touch targets ----------
+     The phone number is the control a patient reaches for when they feel
+     unwell, so it gets a real tap area rather than an inline text link. */
+  .contact-tel a.tel,
+  .contact-email a.tel {
+    display: inline-block;
+    min-height: 44px;
+    line-height: 1.5;
+    padding: 4px 2px;
+  }
+  /* Guarantee the WCAG 2.2 AA 24px floor on phone links even where they sit
+     mid-sentence (which is itself an exception to the rule). Tel links are
+     nbsp-joined so inline-block cannot cause an awkward wrap; email links are
+     deliberately left inline so they can still break across lines. */
+  a[href^="tel:"] { display: inline-block; min-height: 24px; }
+  .pagefoot { overflow-wrap: anywhere; }
+  .pagefoot a.tel { display: inline-block; min-height: 32px; padding: 3px 1px; }
+
+  /* ---------- tablet ---------- */
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .wrap { padding-left: 24px; padding-right: 24px; }
+  }
+
+  /* ---------- phones ---------- */
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .wrap { padding: 20px 16px 56px; }
+    .card { padding: 18px 16px 8px; border-radius: 14px; }
+    .urgent, .sameday { padding: 14px 15px; }
+    .urgent ul, .sameday ul { padding-left: 20px; }
+    .howto, .qr-block { padding: 14px 15px; }
+    .choice { padding: 12px 13px; gap: 12px; }
+    .contact-tel { font-size: 20px; }
+
+    /* write-in boxes take the full line rather than squeezing beside a label */
+    .otherline { gap: 8px; }
+    .otherline .tin { flex: 1 1 100%; }
+
+    /* QR sits above its explanation instead of beside it */
+    .qr-block { gap: 14px; }
+    .qr-block img { width: 124px; height: 124px; margin: 0 auto; }
+    .qr-block .qr-text { flex: 1 1 100%; }
+  }
+
+  /* ---------- very narrow (320px class) ---------- */
+  @media (max-width: 360px) {
+    .wrap { padding-left: 14px; padding-right: 14px; }
+    .card { padding: 16px 13px 6px; }
+    .choice { padding: 11px 11px; gap: 10px; }
+    .choice input[type="checkbox"], .choice input[type="radio"] { width: 24px; height: 24px; }
+  }
+
+  /* respect the notch in landscape */
+  @supports (padding: max(0px)) {
+    .wrap {
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
+  }
+
+  #rvh { scroll-margin-top: 12px; }
+
   @media print {
     :root, :root[data-theme="dark"] {
       --bg: #FFFFFF; --card: #FFFFFF; --ink: #111111; --muted: #444444;
@@ -500,12 +562,12 @@
   <section class="howto" aria-labelledby="howto-h">
     <h2 id="howto-h">How to fill in and send this form</h2>
     <ul>
+      <li>Your answers save as you type, so you can stop and come back to them.</li>
       <li>Have your product box or vial label to hand &mdash; we need the batch number from it.</li>
       <li>Fill in as much as you can. If you are not sure of an answer, leave it blank rather
         than delay sending it.</li>
-      <li>Your answers save as you type, so you can stop and come back to them.</li>
       <li>When you have finished, press <strong>Review my answers</strong> at the bottom, then
-        email the report to us.</li>
+        email the report to <a class="tel" href="mailto:rf-tr.clinicalimmunology@nhs.net">rf-tr.clinicalimmunology@nhs.net</a>.</li>
     </ul>
   </section>
 
@@ -959,12 +1021,11 @@
 
     <div class="next-box">
       <h3>Send this to the Immunology team</h3>
-      <p>Email it to <a class="tel" href="mailto:rf-tr.clinicalimmunology@nhs.net">rf-tr.clinicalimmunology@nhs.net</a>, copy it into a message, or print it (printing also lets
-        you save it as a PDF to attach).</p>
+      <p>Email it to <a class="tel" href="mailto:rf-tr.clinicalimmunology@nhs.net">rf-tr.clinicalimmunology@nhs.net</a>, copy it into a message, or save it as a PDF to attach.</p>
       <div class="review-actions">
         <button class="btn" type="button" id="btn-email">Email my report</button>
         <button class="btn btn-quiet" type="button" id="btn-copy">Copy my report</button>
-        <button class="btn btn-quiet" type="button" id="btn-print">Print / save as PDF</button>
+        <button class="btn btn-quiet" type="button" id="btn-print">Save as PDF</button>
       </div>
       <p class="fine">If the email button doesn't open your mail app, or the message looks cut
         off, use &ldquo;Copy my report&rdquo; and paste it into a new email.</p>

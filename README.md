@@ -20,11 +20,21 @@ The same questionnaire in two formats, built from one set of questions:
 
 | Format | File | Use |
 |---|---|---|
-| Fillable PDF | `dist/immunoglobulin-reaction-report.pdf` | 6 pages, 88 AcroForm fields. Patients type into it, save, and email it back — or print and fill it in by hand. |
-| Interactive web form | `dist/index.html` | Single self-contained file. Better on a phone: autosaves as you type, reviews your answers, then emails or prints them. |
+| Fillable PDF | `dist/immunoglobulin-reaction-report.pdf` | 6 pages, 88 AcroForm fields. Patients type into it, save, and email it back. Best on a computer. |
+| Interactive web form | `dist/index.html` | Single self-contained file. The mobile and tablet route: autosaves as you type, reviews your answers, then emails them. |
 
 Both carry a QR code pointing at the hosted web form, so a printed sheet leads a
 patient to the phone version.
+
+### Which format for which device
+
+The web form is the route for **phones and tablets** — it reflows, autosaves, and
+the answers are typed, not written. The PDF is A4 and fixed-layout, so it suits a
+**computer**; filling 88 fields in a phone PDF viewer is miserable and nobody should
+be asked to.
+
+Neither format asks anyone to print and write by hand. The whole workflow is digital:
+type, save, email to the team mailbox.
 
 ### How the form is structured
 

@@ -466,11 +466,11 @@ def build(total_pages, out_path):
         WARN, WARN_BG, WARN_STRONG)
 
     info_box("How to fill in and send this form", [
-        "You can type straight into this PDF and save it, or print it and write on it.",
+        "Type your answers straight into this PDF, then save it.",
         "Have your product box or vial label to hand - we need the batch number from it.",
         "Fill in as much as you can. If you are not sure of an answer, leave it blank rather "
         "than delay sending it.",
-        "Email the completed form to " + EMAIL + ", or bring it to your next appointment.",
+        "When you have finished, email the completed form to " + EMAIL + ".",
     ])
 
     qr_box()
@@ -764,9 +764,9 @@ def build(total_pages, out_path):
     y -= 56 + 12
 
     gap(2)
-    wrapped("Send your completed form to " + EMAIL + " or bring it to your next appointment. "
-            "This form does not replace urgent medical care - if your symptoms get worse, "
-            "contact the Immunology team, NHS 111, or 999.",
+    wrapped("Email your completed form to " + EMAIL + ". This form does not replace urgent "
+            "medical care - if your symptoms get worse, contact the Immunology team, "
+            "NHS 111, or 999.",
             "Helvetica-Oblique", 8.8, CW, 11.5, MUTED)
 
     footer()
