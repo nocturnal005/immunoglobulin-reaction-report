@@ -1,0 +1,3 @@
+# Patient-facing clinical form: reachable by direct link and QR only.
+User-agent: *
+Disallow: /

@@ -19,7 +19,7 @@ The same questionnaire in two formats, built from one set of questions:
 | Format | File | Use |
 |---|---|---|
 | Fillable PDF | `dist/immunoglobulin-reaction-report.pdf` | 6 pages, 88 AcroForm fields. Patients type into it, save, and email it back — or print and fill it in by hand. |
-| Interactive web form | `dist/immunoglobulin-reaction-report.html` | Single self-contained file. Better on a phone: autosaves as you type, reviews your answers, then emails or prints them. |
+| Interactive web form | `dist/index.html` | Single self-contained file. Better on a phone: autosaves as you type, reviews your answers, then emails or prints them. |
 
 Both carry a QR code pointing at the hosted web form, so a printed sheet leads a
 patient to the phone version.
@@ -67,7 +67,7 @@ The web form is authored directly as `src/form.html`. To produce the standalone
 deliverable, wrap it in an HTML shell:
 
 ```bash
-{ printf '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n'; cat src/form.html; printf '\n</body>\n</html>\n'; } > dist/immunoglobulin-reaction-report.html
+{ printf '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n</head>\n<body>\n'; cat src/form.html; printf '\n</body>\n</html>\n'; } > dist/index.html
 ```
 
 ### Changing where the QR points
@@ -87,7 +87,7 @@ src/
   build_pdf.py   two-pass AcroForm PDF generator (page count needs pass one)
   make_qr.py     QR generator, with a decode check
   form.html      source of the interactive web form
-dist/            built deliverables — PDF, standalone HTML, QR in three variants
+dist/            built deliverables — PDF, index.html (the hosted form), QR variants
 docs/
   OUTSTANDING.md open clinical, governance and accessibility items
 ```
