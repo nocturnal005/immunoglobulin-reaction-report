@@ -56,7 +56,8 @@ These appear in `src/build_pdf.py` (constants `TEL`, `TEL_SHORT`, `EMAIL`) and i
 Requires Python 3.9+.
 
 ```bash
-pip install -r requirements.txt
+pip install -r src/src/requirements.txt   build deps (kept out of the repo root so the
+                 host does not mistake this for a Python web app)
 python src/make_qr.py      # writes the QR into dist/ and verifies it decodes
 python src/build_pdf.py    # builds the 6-page fillable PDF into dist/
 ```
