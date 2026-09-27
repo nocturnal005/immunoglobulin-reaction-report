@@ -19,7 +19,7 @@ OUT = DIST / "immunoglobulin-reaction-report.pdf"
 SCRATCH = DIST / "_pagecount.pdf"          # deleted after the counting pass
 QR_IMG = DIST / "qr-questionnaire.png"     # produced by make_qr.py - run that first
 # shown as fallback text beside the QR, so it must match make_qr.FORM_URL
-QR_URL_TEXT = "claude.ai/code/artifact/a4e2c535-41dc-4724-aeaa-5c377bccde39"
+QR_URL_TEXT = "immunoglobulin-reaction-report.vercel.app"
 
 # ---- department contact details --------------------------------------------
 TEL = "020 7794 0500, ext. 32232 or 32233"

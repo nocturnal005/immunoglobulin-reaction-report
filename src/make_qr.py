@@ -13,7 +13,7 @@ import segno
 
 # The URL a patient reaches by scanning. Must be openable WITHOUT signing in --
 # a scanned link cannot prompt for a login.
-FORM_URL = "https://claude.ai/code/artifact/a4e2c535-41dc-4724-aeaa-5c377bccde39"
+FORM_URL = "https://immunoglobulin-reaction-report.vercel.app/"
 
 TEAL = "#0B6B70"
 DIST = Path(__file__).resolve().parent.parent / "dist"

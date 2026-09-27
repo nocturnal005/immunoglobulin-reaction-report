@@ -4,6 +4,8 @@ A patient-facing adverse reaction report form for **home therapy patients on IVI
 Completed reports go to the **Immunology Specialist Nurses / Immunology Consultant**,
 Clinical Immunology, Royal Free London.
 
+**Live at <https://immunoglobulin-reaction-report.vercel.app/>** — deployed from `dist/` on every push to `main`.
+
 > ### ⚠️ Status: draft — not approved for clinical use
 >
 > The clinical content of this form has **not been signed off** by the Immunology
