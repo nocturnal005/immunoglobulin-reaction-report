@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# intermediate from the PDF page-counting pass
+dist/_pagecount.pdf
+
+# local render/verification output
+*.tmp.png
