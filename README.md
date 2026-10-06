@@ -20,7 +20,7 @@ The same questionnaire in two formats, built from one set of questions:
 
 | Format | File | Use |
 |---|---|---|
-| Fillable PDF | `dist/immunoglobulin-reaction-report.pdf` | 6 pages, 88 AcroForm fields. Patients type into it, save, and email it back. Best on a computer. |
+| Fillable PDF | `dist/immunoglobulin-reaction-report.pdf` | 4 pages, 34 AcroForm fields. Patients type into it, save, and email it back. Best on a computer. |
 | Interactive web form | `dist/index.html` | Single self-contained file. The mobile and tablet route: autosaves as you type, reviews your answers, then emails them. |
 
 Both carry a QR code pointing at the hosted web form, so a printed sheet leads a
@@ -30,7 +30,7 @@ patient to the phone version.
 
 The web form is the route for **phones and tablets** — it reflows, autosaves, and
 the answers are typed, not written. The PDF is A4 and fixed-layout, so it suits a
-**computer**; filling 88 fields in a phone PDF viewer is miserable and nobody should
+**computer**; filling 34 fields in a phone PDF viewer is miserable and nobody should
 be asked to.
 
 Neither format asks anyone to print and write by hand. The whole workflow is digital:
@@ -47,9 +47,11 @@ type, save, email to the team mailbox.
    of the report.
 3. **Infusion context.** New batch, recent brand switch, infusion rate, pre-medication,
    and intercurrent illness — the things a nurse would otherwise have to ring and ask.
-4. **Reaction detail.** Onset banded relative to the infusion (during / 1h / 6h / 24h /
-   3 days / later), symptoms split into whole-body and infusion-site, plus a same-day
-   red-flag set. In the web version, ticking a red flag raises a live "ring today" alert.
+4. **Reaction detail.** Eight numbered questions remain: onset, the patient's own
+   description, duration, whether it has happened before, what they did with the
+   infusion, whether symptoms improved, whether the dose was finished, and medication
+   taken. Structured symptom, red-flag, severity, contact and follow-up questions have
+   been removed; the page-one 999 and same-day escalation guidance remains.
 
 No patient data is transmitted anywhere by the form itself. Web answers stay in the
 browser (`localStorage`) and leave only when the patient sends them from their own
@@ -71,7 +73,7 @@ Requires Python 3.9+.
 pip install -r src/src/requirements.txt   build deps (kept out of the repo root so the
                  host does not mistake this for a Python web app)
 python src/make_qr.py      # writes the QR into dist/ and verifies it decodes
-python src/build_pdf.py    # builds the 6-page fillable PDF into dist/
+python src/build_pdf.py    # builds the 4-page fillable PDF into dist/
 ```
 
 `make_qr.py` must run first — `build_pdf.py` embeds `dist/qr-questionnaire.png`.

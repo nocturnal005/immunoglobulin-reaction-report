@@ -183,7 +183,7 @@
   .contact-email { margin: 0; font-size: 16px; overflow-wrap: anywhere; }
   a.tel { color: var(--accent); text-decoration: none; border-bottom: 1.5px solid var(--accent-line); }
   a.tel:hover { border-bottom-color: var(--accent); }
-  .pagefoot a.tel, .flag-alert a.tel, .sameday a.tel { color: inherit; border-bottom-color: currentColor; }
+  .pagefoot a.tel, .sameday a.tel { color: inherit; border-bottom-color: currentColor; }
 
   .howto {
     border: 1px solid var(--line);
@@ -327,7 +327,6 @@
     cursor: pointer;
   }
   .choice:has(:checked) { border-color: var(--accent); background: var(--accent-tint); }
-  .choice.flag:has(:checked) { border-color: var(--warn-strong); background: var(--warn-bg); }
   .choice input[type="checkbox"], .choice input[type="radio"] {
     width: 26px;
     height: 26px;
@@ -350,18 +349,6 @@
   .otherline .tin { flex: 1 1 180px; width: auto; min-height: 44px; padding: 8px 12px; }
   .otherline .olabel { font-weight: 600; }
 
-  .flag-alert {
-    border: 2px solid var(--warn-line);
-    border-left: 8px solid var(--warn-strong);
-    background: var(--warn-bg);
-    color: var(--warn-ink);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin: 12px 0 6px;
-    font-weight: 600;
-  }
-  .flag-alert strong { display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; font-size: 15px; }
-  .flag-alert[hidden] { display: none; }
 
   :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
   .tin:focus-visible, textarea:focus-visible, select:focus-visible { outline-offset: 0; }
@@ -785,71 +772,11 @@
         <textarea id="r_desc" placeholder="Write anything you noticed, in your own words. There is no wrong way to describe it."></textarea>
       </fieldset>
 
-      <fieldset class="q">
-        <legend>3. Which whole-body symptoms did you have?</legend>
-        <p class="hint">Tick all that apply.</p>
-        <div class="choices">
-          <label class="choice"><input type="checkbox" id="sym_headache"><span class="ctext">Headache</span></label>
-          <label class="choice"><input type="checkbox" id="sym_fever"><span class="ctext">Fever, chills, or shivering</span></label>
-          <label class="choice"><input type="checkbox" id="sym_nausea"><span class="ctext">Nausea or vomiting</span></label>
-          <label class="choice"><input type="checkbox" id="sym_muscle"><span class="ctext">Muscle aches</span></label>
-          <label class="choice"><input type="checkbox" id="sym_joint"><span class="ctext">Joint pain</span></label>
-          <label class="choice"><input type="checkbox" id="sym_back"><span class="ctext">Back pain</span></label>
-          <label class="choice"><input type="checkbox" id="sym_tired"><span class="ctext">Unusual tiredness or feeling washed out</span></label>
-          <label class="choice"><input type="checkbox" id="sym_flu"><span class="ctext">Flu-like feeling</span></label>
-          <label class="choice"><input type="checkbox" id="sym_dizzy"><span class="ctext">Dizziness or lightheadedness</span></label>
-          <label class="choice"><input type="checkbox" id="sym_flush"><span class="ctext">Flushing of the face</span></label>
-          <label class="choice"><input type="checkbox" id="sym_rash"><span class="ctext">Rash, hives, or itching</span></label>
-          <label class="choice"><input type="checkbox" id="sym_palp"><span class="ctext">Racing heart or palpitations</span></label>
-          <label class="choice"><input type="checkbox" id="sym_tummy"><span class="ctext">Tummy pain or diarrhoea</span></label>
-          <label class="choice"><input type="checkbox" id="sym_bp" aria-label="Blood pressure change, if measured">
-            <span class="otherline"><span class="olabel" aria-hidden="true">Blood pressure change, if you measured it:</span>
-              <input class="tin" type="text" id="sym_bp_txt" aria-label="What was your blood pressure reading?"></span></label>
-          <label class="choice"><input type="checkbox" id="sym_other" aria-label="Another whole-body symptom">
-            <span class="otherline"><span class="olabel" aria-hidden="true">Something else:</span>
-              <input class="tin" type="text" id="sym_other_txt" aria-label="Describe the other symptom"></span></label>
-        </div>
-      </fieldset>
+
+
 
       <fieldset class="q">
-        <legend>4. Did you have any symptoms at the infusion site? <span class="only">SCIG</span></legend>
-        <p class="hint">Tick all that apply. Some site swelling and redness is normal with SCIG,
-          but we still like to know about it.</p>
-        <div class="choices">
-          <label class="choice"><input type="checkbox" id="site_swell"><span class="ctext">Swelling or a lump at the site</span></label>
-          <label class="choice"><input type="checkbox" id="site_red"><span class="ctext">Redness</span></label>
-          <label class="choice"><input type="checkbox" id="site_itch"><span class="ctext">Itching at the site</span></label>
-          <label class="choice"><input type="checkbox" id="site_pain"><span class="ctext">Pain or soreness</span></label>
-          <label class="choice"><input type="checkbox" id="site_bruise"><span class="ctext">Bruising</span></label>
-          <label class="choice"><input type="checkbox" id="site_leak"><span class="ctext">Fluid leaking from the site</span></label>
-          <label class="choice"><input type="checkbox" id="site_hot"><span class="ctext">The site felt hot</span></label>
-          <label class="choice"><input type="checkbox" id="site_long"><span class="ctext">A lump that lasted longer than 24 hours</span></label>
-          <label class="choice"><input type="checkbox" id="site_none"><span class="ctext">No site symptoms, or I have IVIG</span></label>
-        </div>
-      </fieldset>
-
-      <fieldset class="q">
-        <legend>5. Did you have any of these symptoms?</legend>
-        <p class="hint">These ones we always want to know about straight away.</p>
-        <div class="choices">
-          <label class="choice flag"><input type="checkbox" id="rf_headneck" data-flag="1"><span class="ctext">Severe headache with a stiff neck, dislike of bright light, or vomiting</span></label>
-          <label class="choice flag"><input type="checkbox" id="rf_urine" data-flag="1"><span class="ctext">Dark, cola-coloured, or red urine</span></label>
-          <label class="choice flag"><input type="checkbox" id="rf_jaundice" data-flag="1"><span class="ctext">Yellowing of your skin or the whites of your eyes</span></label>
-          <label class="choice flag"><input type="checkbox" id="rf_breath" data-flag="1"><span class="ctext">New breathlessness or extreme tiredness</span></label>
-          <label class="choice flag"><input type="checkbox" id="rf_lessurine" data-flag="1"><span class="ctext">Passing much less urine than normal</span></label>
-          <label class="choice flag"><input type="checkbox" id="rf_rigors" data-flag="1"><span class="ctext">Fever with shaking or rigors</span></label>
-          <label class="choice"><input type="checkbox" id="rf_none"><span class="ctext">None of these</span></label>
-        </div>
-        <div class="flag-alert" id="flag-alert" role="alert" hidden>
-          <strong>Please ring the Immunology team today</strong>
-          You have ticked a symptom we need to review the same day. Call the Immunology
-          Specialist Nurses on <a class="tel" href="tel:+442077940500">020&nbsp;7794&nbsp;0500</a>, ext.&nbsp;32232 or 32233 now, or NHS&nbsp;111 if the line is closed. Carry on
-          and send this form afterwards &mdash; but please make the call first.
-        </div>
-      </fieldset>
-
-      <fieldset class="q">
-        <legend>6. How long did the reaction last?</legend>
+        <legend>3. How long did the reaction last?</legend>
         <div class="choices">
           <label class="choice"><input type="radio" name="duration" id="dur_ongoing" value="It is still going on"><span class="ctext">It is still going on</span></label>
           <label class="choice"><input type="radio" name="duration" id="dur_1h" value="Less than 1 hour"><span class="ctext">Less than 1 hour</span></label>
@@ -860,20 +787,9 @@
         </div>
       </fieldset>
 
-      <fieldset class="q">
-        <legend>7. How severe would you rate this reaction?</legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="severity" id="sev_mild" value="Mild">
-            <span class="ctext"><span class="cterm">Mild</span><br><span class="cdesc">I notice it, but it doesn't interfere with my day.</span></span></label>
-          <label class="choice"><input type="radio" name="severity" id="sev_mod" value="Moderate">
-            <span class="ctext"><span class="cterm">Moderate</span><br><span class="cdesc">It is uncomfortable and making my daily activities difficult.</span></span></label>
-          <label class="choice"><input type="radio" name="severity" id="sev_sev" value="Severe">
-            <span class="ctext"><span class="cterm">Severe</span><br><span class="cdesc">It is highly painful or prevents me from doing my daily activities.</span></span></label>
-        </div>
-      </fieldset>
 
       <fieldset class="q">
-        <legend>8. Has this happened with your immunoglobulin before?</legend>
+        <legend>4. Has this happened with your immunoglobulin before?</legend>
         <div class="choices">
           <label class="choice"><input type="radio" name="before" id="bef_no" value="No, this is the first time"><span class="ctext">No, this is the first time</span></label>
           <label class="choice"><input type="radio" name="before" id="bef_same" value="Yes, with this same product"><span class="ctext">Yes, with this same product</span></label>
@@ -892,7 +808,7 @@
       </div>
 
       <fieldset class="q">
-        <legend>9. Did you slow down or stop the infusion?</legend>
+        <legend>5. Did you slow down or stop the infusion?</legend>
         <div class="choices">
           <label class="choice"><input type="radio" name="stopped" id="stop_slowed" value="I slowed it down"><span class="ctext">I slowed it down</span></label>
           <label class="choice"><input type="radio" name="stopped" id="stop_paused" value="I paused it, then restarted"><span class="ctext">I paused it, then restarted</span></label>
@@ -903,7 +819,7 @@
       </fieldset>
 
       <fieldset class="q">
-        <legend>10. If you slowed or stopped, did the symptoms improve?</legend>
+        <legend>6. If you slowed or stopped, did the symptoms improve?</legend>
         <div class="choices">
           <label class="choice"><input type="radio" name="improved" id="imp_yes" value="Yes, they settled"><span class="ctext">Yes, they settled</span></label>
           <label class="choice"><input type="radio" name="improved" id="imp_part" value="They improved a little"><span class="ctext">They improved a little</span></label>
@@ -914,7 +830,7 @@
       </fieldset>
 
       <fieldset class="q">
-        <legend>11. Did you finish the full dose?</legend>
+        <legend>7. Did you finish the full dose?</legend>
         <div class="choices">
           <label class="choice"><input type="radio" name="finished" id="fin_yes" value="Yes, the full dose"><span class="ctext">Yes, I had the full dose</span></label>
           <label class="choice"><input type="radio" name="finished" id="fin_part" value="Part of the dose" aria-label="I had part of the dose">
@@ -925,7 +841,7 @@
       </fieldset>
 
       <fieldset class="q">
-        <legend>12. Did you take any medication to treat these symptoms?</legend>
+        <legend>8. Did you take any medication to treat these symptoms?</legend>
         <p class="hint">For example paracetamol, ibuprofen, or an antihistamine such as cetirizine
           or chlorphenamine.</p>
         <div class="choices">
@@ -936,77 +852,7 @@
         </div>
       </fieldset>
 
-      <fieldset class="q">
-        <legend>13. Have you contacted anyone about this reaction yet?</legend>
-        <div class="choices">
-          <label class="choice"><input type="checkbox" id="con_none"><span class="ctext">No, I am reporting it for the first time now</span></label>
-          <label class="choice"><input type="checkbox" id="con_nurse"><span class="ctext">Immunology Specialist Nurse</span></label>
-          <label class="choice"><input type="checkbox" id="con_doctor"><span class="ctext">Immunology doctor or consultant</span></label>
-          <label class="choice"><input type="checkbox" id="con_homecare"><span class="ctext">Homecare company nurse</span></label>
-          <label class="choice"><input type="checkbox" id="con_gp"><span class="ctext">GP</span></label>
-          <label class="choice"><input type="checkbox" id="con_111"><span class="ctext">NHS 111</span></label>
-          <label class="choice"><input type="checkbox" id="con_ae"><span class="ctext">A&amp;E or 999</span></label>
-          <label class="choice"><input type="checkbox" id="con_when" aria-label="When you contacted them">
-            <span class="otherline"><span class="olabel" aria-hidden="true">Date and time I contacted them:</span>
-              <input class="tin" type="text" id="con_when_txt" aria-label="What date and time did you contact them?"></span></label>
-        </div>
-      </fieldset>
 
-      <fieldset class="q">
-        <legend><label for="advice">14. What were you advised to do?</label></legend>
-        <p class="hint">Leave blank if you have not spoken to anyone yet.</p>
-        <textarea id="advice" style="min-height:90px"></textarea>
-      </fieldset>
-    </section>
-
-    <!-- ============ Section 5 ============ -->
-    <section class="card" aria-labelledby="s5h">
-      <div class="card-h">
-        <span class="sec-tag">Section 5</span>
-        <h2 id="s5h">Getting back to you</h2>
-        <p class="sec-sub">So the Immunology team can follow this up with you.</p>
-      </div>
-
-      <fieldset class="q">
-        <legend>15. How would you prefer us to contact you?</legend>
-        <p class="hint">Tick all that work for you.</p>
-        <div class="choices">
-          <label class="choice"><input type="checkbox" id="c_phone" aria-label="Contact me by phone call">
-            <span class="otherline"><span class="olabel" aria-hidden="true">Phone call:</span>
-              <input class="tin" type="text" id="c_phone_txt" inputmode="tel" autocomplete="tel" aria-label="Best phone number to call you on"></span></label>
-          <label class="choice"><input type="checkbox" id="c_text" aria-label="Contact me by text message">
-            <span class="otherline"><span class="olabel" aria-hidden="true">Text message:</span>
-              <input class="tin" type="text" id="c_text_txt" inputmode="tel" aria-label="Mobile number for text messages"></span></label>
-          <label class="choice"><input type="checkbox" id="c_email" aria-label="Contact me by email">
-            <span class="otherline"><span class="olabel" aria-hidden="true">Email:</span>
-              <input class="tin" type="text" id="c_email_txt" inputmode="email" autocomplete="email" aria-label="Email address"></span></label>
-          <label class="choice"><input type="checkbox" id="c_visit"><span class="ctext">Discuss at my next appointment or home visit</span></label>
-        </div>
-      </fieldset>
-
-      <fieldset class="q">
-        <legend>16. Can we leave a voicemail if you don't answer?</legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="vm" id="vm_yes" value="Yes"><span class="ctext">Yes</span></label>
-          <label class="choice"><input type="radio" name="vm" id="vm_no" value="No"><span class="ctext">No, please just try again</span></label>
-        </div>
-      </fieldset>
-
-      <fieldset class="q">
-        <legend>17. Did you feel you had clear instructions on what to do if you had a
-          reaction? <span class="only">Optional</span></legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="instr" id="instr_yes" value="Yes"><span class="ctext">Yes</span></label>
-          <label class="choice"><input type="radio" name="instr" id="instr_no" value="No"><span class="ctext">No</span></label>
-          <label class="choice"><input type="radio" name="instr" id="instr_unsure" value="I'm not sure"><span class="ctext">I'm not sure</span></label>
-        </div>
-      </fieldset>
-
-      <fieldset class="q">
-        <legend><label for="anything">18. Anything else you would like the team to
-          know? <span class="only">Optional</span></label></legend>
-        <textarea id="anything" style="min-height:90px"></textarea>
-      </fieldset>
     </section>
 
     <div class="card actions">
@@ -1089,30 +935,6 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
-  function collect(pairs) {
-    var out = [];
-    pairs.forEach(function (p) { if (chk(p[0])) out.push(p[1]); });
-    return out;
-  }
-  function withText(boxId, txtId, label) {
-    if (chk(boxId) || v(txtId)) return label + (v(txtId) ? ": " + v(txtId) : "");
-    return "";
-  }
-
-  // ---------- red-flag alert ----------
-  var flagBoxes = Array.prototype.slice.call(form.querySelectorAll('input[data-flag="1"]'));
-  function updateFlag() {
-    var any = flagBoxes.some(function (b) { return b.checked; });
-    $("flag-alert").hidden = !any;
-    if (any && $("rf_none").checked) $("rf_none").checked = false;
-  }
-  flagBoxes.forEach(function (b) { b.addEventListener("change", updateFlag); });
-  $("rf_none").addEventListener("change", function () {
-    if (this.checked) {
-      flagBoxes.forEach(function (b) { b.checked = false; });
-      updateFlag();
-    }
-  });
 
   // ---------- answer model ----------
   function answers() {
@@ -1127,38 +949,6 @@
     var unwell = radioVal("unwell");
     if (unwell === "Yes") unwell = "Yes" + (v("unwell_what") ? " — " + v("unwell_what") : "");
 
-    var sym = collect([
-      ["sym_headache", "Headache"], ["sym_fever", "Fever, chills, or shivering"],
-      ["sym_nausea", "Nausea or vomiting"], ["sym_muscle", "Muscle aches"],
-      ["sym_joint", "Joint pain"], ["sym_back", "Back pain"],
-      ["sym_tired", "Unusual tiredness"], ["sym_flu", "Flu-like feeling"],
-      ["sym_dizzy", "Dizziness or lightheadedness"], ["sym_flush", "Facial flushing"],
-      ["sym_rash", "Rash, hives, or itching"], ["sym_palp", "Racing heart or palpitations"],
-      ["sym_tummy", "Tummy pain or diarrhoea"]
-    ]);
-    var bp = withText("sym_bp", "sym_bp_txt", "Blood pressure change");
-    if (bp) sym.push(bp);
-    var symOther = withText("sym_other", "sym_other_txt", "Other");
-    if (symOther) sym.push(symOther);
-
-    var site = collect([
-      ["site_swell", "Swelling or lump"], ["site_red", "Redness"],
-      ["site_itch", "Itching"], ["site_pain", "Pain or soreness"],
-      ["site_bruise", "Bruising"], ["site_leak", "Fluid leaking"],
-      ["site_hot", "Site felt hot"], ["site_long", "Lump lasting over 24 hours"],
-      ["site_none", "No site symptoms / has IVIG"]
-    ]);
-
-    var flags = collect([
-      ["rf_headneck", "Severe headache with stiff neck / photophobia / vomiting"],
-      ["rf_urine", "Dark, cola-coloured, or red urine"],
-      ["rf_jaundice", "Yellowing of skin or eyes"],
-      ["rf_breath", "New breathlessness or extreme tiredness"],
-      ["rf_lessurine", "Passing much less urine than normal"],
-      ["rf_rigors", "Fever with shaking or rigors"]
-    ]);
-    if (!flags.length && chk("rf_none")) flags = ["None of these"];
-
     var meds = radioVal("meds");
     if (meds === "Yes") meds = "Yes" + (v("meds_list") ? " — " + v("meds_list") : "");
 
@@ -1166,25 +956,6 @@
     if (finished === "Part of the dose") {
       finished = "Part of the dose" + (v("finished_how") ? " — " + v("finished_how") : "");
     }
-
-    var contacted = collect([
-      ["con_none", "No one yet — reporting for the first time"],
-      ["con_nurse", "Immunology Specialist Nurse"],
-      ["con_doctor", "Immunology doctor or consultant"],
-      ["con_homecare", "Homecare company nurse"],
-      ["con_gp", "GP"], ["con_111", "NHS 111"], ["con_ae", "A&E or 999"]
-    ]);
-    var conWhen = withText("con_when", "con_when_txt", "Contacted on");
-    if (conWhen) contacted.push(conWhen);
-
-    var contactPrefs = [];
-    var cp = withText("c_phone", "c_phone_txt", "Phone call");
-    if (cp) contactPrefs.push(cp);
-    var ct = withText("c_text", "c_text_txt", "Text message");
-    if (ct) contactPrefs.push(ct);
-    var ce = withText("c_email", "c_email_txt", "Email");
-    if (ce) contactPrefs.push(ce);
-    if (chk("c_visit")) contactPrefs.push("Discuss at my next appointment or home visit");
 
     var started = [fmtDate(v("r_date")), v("r_time")].filter(Boolean).join(" at ");
     var infusion = [fmtDate(v("inf_date")), v("inf_time")].filter(Boolean).join(" at ");
@@ -1215,32 +986,19 @@
         ["Onset relative to infusion", radioVal("onset")],
         ["Date and time it started", started],
         ["In the patient's own words", v("r_desc")],
-        ["Whole-body symptoms", sym.join("; ")],
-        ["Infusion-site symptoms", site.join("; ")],
-        ["Symptoms needing same-day review", flags.join("; ")],
         ["Duration", radioVal("duration")],
-        ["Severity", radioVal("severity")],
         ["Happened before", radioVal("before")]
       ]},
       { sec: "What the patient did", rows: [
         ["Slowed or stopped the infusion", radioVal("stopped")],
         ["Symptoms after slowing or stopping", radioVal("improved")],
         ["Dose completed", finished],
-        ["Medication taken for symptoms", meds],
-        ["Already contacted", contacted.join("; ")],
-        ["Advice given", v("advice")]
-      ]},
-      { sec: "Follow-up", rows: [
-        ["Preferred contact", contactPrefs.join("; ")],
-        ["Voicemail OK", radioVal("vm")],
-        ["Had clear instructions on what to do", radioVal("instr")],
-        ["Anything else", v("anything")]
+        ["Medication taken for symptoms", meds]
       ]}
     ];
   }
 
   function missingKeyAnswers() {
-    var data = answers();
     var out = [];
     if (!v("p_name")) out.push("Patient name");
     if (!v("p_nhs")) out.push("NHS or hospital number");
@@ -1250,8 +1008,6 @@
     if (!v("inf_date")) out.push("Date of the infusion");
     if (!radioVal("onset")) out.push("When the reaction started");
     if (!v("r_desc")) out.push("What happened, in your own words");
-    if (data[2].rows[3][1] === "" && data[2].rows[4][1] === "") out.push("Your symptoms");
-    if (!radioVal("severity")) out.push("How severe the reaction was");
     return out;
   }
 
@@ -1360,7 +1116,6 @@
     $("btn-clear").textContent = "Clear all my answers from this device";
     $("review").hidden = true;
     document.body.classList.remove("reviewed");
-    updateFlag();
     prefillToday();
     setStatus("All answers have been cleared from this device.");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1368,9 +1123,7 @@
 
   // typing in a write-in box ticks its option
   [["filler_name", "fill_carer"], ["premed_what", "pm_yes"], ["unwell_what", "uw_yes"],
-   ["sym_bp_txt", "sym_bp"], ["sym_other_txt", "sym_other"], ["meds_list", "meds_yes"],
-   ["finished_how", "fin_part"], ["con_when_txt", "con_when"],
-   ["c_phone_txt", "c_phone"], ["c_text_txt", "c_text"], ["c_email_txt", "c_email"]
+   ["meds_list", "meds_yes"], ["finished_how", "fin_part"]
   ].forEach(function (pair) {
     var txt = $(pair[0]), box = $(pair[1]);
     if (!txt || !box) return;
@@ -1419,7 +1172,6 @@
 
   restore();
   prefillToday();
-  updateFlag();
 })();
 </script>
 

@@ -602,59 +602,7 @@ def build(total_pages, out_path):
                M, CW, h=88, multiline=True)
     y -= 88 + 12
 
-    qlabel("3. Which whole-body symptoms did you have?", keep=120)
-    hint("Tick all that apply.")
-    for nm, lb in [("sym_headache", "Headache"),
-                   ("sym_fever", "Fever, chills, or shivering"),
-                   ("sym_nausea", "Nausea or vomiting"),
-                   ("sym_muscle", "Muscle aches"),
-                   ("sym_joint", "Joint pain"),
-                   ("sym_back", "Back pain"),
-                   ("sym_tired", "Unusual tiredness or feeling washed out"),
-                   ("sym_flu", "Flu-like feeling"),
-                   ("sym_dizzy", "Dizziness or lightheadedness"),
-                   ("sym_flush", "Flushing of the face"),
-                   ("sym_rash", "Rash, hives, or itching"),
-                   ("sym_palp", "Racing heart or palpitations"),
-                   ("sym_tummy", "Tummy pain or diarrhoea")]:
-        check(nm, lb)
-    check("sym_bp", "Blood pressure change, if measured:",
-          inline=("sym_bp_txt", "What was your blood pressure reading?"))
-    check("sym_other", "Something else:",
-          inline=("sym_other_txt", "Describe the other symptom"))
-    gap(4)
-
-    qlabel("4. Any symptoms at the infusion site?", tag="SCIG", keep=120)
-    hint("Tick all that apply. Some site swelling and redness is normal with SCIG, but we "
-         "still like to know about it.")
-    for nm, lb in [("site_swell", "Swelling or a lump at the site"),
-                   ("site_red", "Redness"),
-                   ("site_itch", "Itching at the site"),
-                   ("site_pain", "Pain or soreness"),
-                   ("site_bruise", "Bruising"),
-                   ("site_leak", "Fluid leaking from the site"),
-                   ("site_hot", "The site felt hot"),
-                   ("site_long", "A lump that lasted longer than 24 hours"),
-                   ("site_none", "No site symptoms, or I have IVIG")]:
-        check(nm, lb)
-    gap(4)
-
-    qlabel("5. Did you have any of these symptoms?", keep=130)
-    hint("These ones we always want to know about straight away. If you tick any, please ring "
-         "the Immunology Specialist Nurses on " + TEL + " today - do not wait for us to reply "
-         "to this form.")
-    for nm, lb in [("rf_headneck",
-                    "Severe headache with a stiff neck, dislike of bright light, or vomiting"),
-                   ("rf_urine", "Dark, cola-coloured, or red urine"),
-                   ("rf_jaundice", "Yellowing of your skin or the whites of your eyes"),
-                   ("rf_breath", "New breathlessness or extreme tiredness"),
-                   ("rf_lessurine", "Passing much less urine than normal"),
-                   ("rf_rigors", "Fever with shaking or rigors")]:
-        check(nm, lb, flag=True)
-    check("rf_none", "None of these")
-    gap(4)
-
-    qlabel("6. How long did the reaction last?", keep=100)
+    qlabel("3. How long did the reaction last?", keep=100)
     radio("duration", "Ongoing", "It is still going on")
     radio("duration", "Under 1 hour", "Less than 1 hour")
     radio("duration", "1-6 hours", "1 to 6 hours")
@@ -663,17 +611,7 @@ def build(total_pages, out_path):
     radio("duration", "Over 3 days", "More than 3 days")
     gap(4)
 
-    qlabel("7. How severe would you rate this reaction?", keep=80)
-    radio("severity", "Mild", "Mild", "I notice it, but it doesn't interfere with my day.",
-          tooltip="Mild")
-    radio("severity", "Moderate", "Moderate",
-          "It is uncomfortable and making my daily activities difficult.", tooltip="Moderate")
-    radio("severity", "Severe", "Severe",
-          "It is highly painful or prevents me from doing my daily activities.",
-          tooltip="Severe")
-    gap(4)
-
-    qlabel("8. Has this happened with your immunoglobulin before?", keep=68)
+    qlabel("4. Has this happened with your immunoglobulin before?", keep=68)
     radio("before", "First time", "No, this is the first time")
     radio("before", "Yes same product", "Yes, with this same product")
     radio("before", "Yes different product", "Yes, but with a different product")
@@ -684,7 +622,7 @@ def build(total_pages, out_path):
     section_header("SECTION 4", "What you did",
                    "Help us understand how you managed the reaction so far.")
 
-    qlabel("9. Did you slow down or stop the infusion?", keep=84)
+    qlabel("5. Did you slow down or stop the infusion?", keep=84)
     radio("stopped", "Slowed", "I slowed it down")
     radio("stopped", "Paused", "I paused it, then restarted")
     radio("stopped", "Stopped", "I stopped completely and did not restart")
@@ -692,7 +630,7 @@ def build(total_pages, out_path):
     radio("stopped", "Not applicable", "Not applicable - I had already finished")
     gap(4)
 
-    qlabel("10. If you slowed or stopped, did the symptoms improve?", keep=84)
+    qlabel("6. If you slowed or stopped, did the symptoms improve?", keep=84)
     radio("improved", "Settled", "Yes, they settled")
     radio("improved", "A little", "They improved a little")
     radio("improved", "No change", "No change")
@@ -700,68 +638,19 @@ def build(total_pages, out_path):
     radio("improved", "Not applicable", "Not applicable")
     gap(4)
 
-    qlabel("11. Did you finish the full dose?", keep=60)
+    qlabel("7. Did you finish the full dose?", keep=60)
     radio("finished", "Full dose", "Yes, I had the full dose")
     radio("finished", "Part", "I had part of it - roughly how much:",
           inline=("finished_how", "Roughly how much of the dose did you have?"))
     radio("finished", "None", "None of it")
     gap(4)
 
-    qlabel("12. Did you take any medication to treat these symptoms?", keep=56)
+    qlabel("8. Did you take any medication to treat these symptoms?", keep=56)
     hint("For example paracetamol, ibuprofen, or an antihistamine such as cetirizine.")
     radio("meds", "No", "No")
     radio("meds", "Yes", "Yes - what and when:",
           inline=("meds_list", "What medication did you take, and when?"))
     gap(4)
-
-    qlabel("13. Have you contacted anyone about this reaction yet?", keep=120)
-    hint("Tick all that apply.")
-    for nm, lb in [("con_none", "No, I am reporting it for the first time now"),
-                   ("con_nurse", "Immunology Specialist Nurse"),
-                   ("con_doctor", "Immunology doctor or consultant"),
-                   ("con_homecare", "Homecare company nurse"),
-                   ("con_gp", "GP"),
-                   ("con_111", "NHS 111"),
-                   ("con_ae", "A&E or 999")]:
-        check(nm, lb)
-    check("con_when", "Date and time I contacted them:",
-          inline=("con_when_txt", "What date and time did you contact them?"))
-    gap(4)
-
-    qlabel("14. What were you advised to do?", keep=70)
-    hint("Leave blank if you have not spoken to anyone yet.")
-    text_field("advice", "What were you advised to do?", M, CW, h=56, multiline=True)
-    y -= 56 + 12
-    rule()
-
-    # ---------------- section 5 ----------------
-    section_header("SECTION 5", "Getting back to you",
-                   "So the Immunology team can follow this up with you.")
-
-    qlabel("15. How would you prefer us to contact you?", keep=90)
-    hint("Tick all that work for you.")
-    check("c_phone", "Phone call:", inline=("c_phone_txt", "Best number to call you on"))
-    check("c_text", "Text message:", inline=("c_text_txt", "Mobile number for text messages"))
-    check("c_email", "Email:", inline=("c_email_txt", "Email address"))
-    check("c_visit", "Discuss at my next appointment or home visit")
-    gap(4)
-
-    qlabel("16. Can we leave a voicemail if you don't answer?", keep=40)
-    radio("vm", "Yes", "Yes")
-    radio("vm", "No", "No, please just try again")
-    gap(4)
-
-    qlabel("17. Did you feel you had clear instructions on what to do if you had a reaction?",
-           tag="OPTIONAL", keep=56)
-    radio("instr", "Yes", "Yes")
-    radio("instr", "No", "No")
-    radio("instr", "Not sure", "I'm not sure")
-    gap(4)
-
-    qlabel("18. Anything else you would like the team to know?", tag="OPTIONAL", keep=60)
-    text_field("anything", "Anything else you would like the team to know?",
-               M, CW, h=56, multiline=True)
-    y -= 56 + 12
 
     gap(2)
     wrapped("Email your completed form to " + EMAIL + ". This form does not replace urgent "
