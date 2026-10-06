@@ -1,0 +1,56 @@
+name: Rebuild generated reaction-report outputs
+
+on:
+  push:
+    branches:
+      - feat/shortened-reaction-report
+    paths:
+      - src/build_pdf.py
+      - src/form.html
+      - .github/workflows/rebuild-generated.yml
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/shortened-reaction-report
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r src/requirements.txt
+          pip install pypdf
+
+      - name: Rebuild PDF and verify contract
+        run: |
+          python src/build_pdf.py
+          python - <<'PY'
+          from pypdf import PdfReader
+          r = PdfReader("dist/immunoglobulin-reaction-report.pdf")
+          fields = r.get_fields() or {}
+          assert len(r.pages) == 4, f"expected 4 pages, got {len(r.pages)}"
+          assert len(fields) == 34, f"expected 34 fields, got {len(fields)}"
+          print(f"verified: {len(r.pages)} pages, {len(fields)} fields")
+          PY
+
+      - name: Commit regenerated PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/immunoglobulin-reaction-report.pdf
+          if git diff --cached --quiet; then
+            echo "Generated PDF already matches."
+          else
+            git commit -m "Rebuild shortened fillable PDF"
+            git push origin HEAD:feat/shortened-reaction-report
+          fi
