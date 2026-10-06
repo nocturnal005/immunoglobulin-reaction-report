@@ -18,6 +18,12 @@ policy. Specific decisions needed:
   they are prescribed one? It currently does not mention it.
 - **Does the red-flag list match the local escalation SOP?**
 
+- **The shortened form no longer captures structured symptom checklists.** Questions 3
+  to 5 were removed, so nurses now rely on the patient's free-text description of the
+  reaction.
+- **The shortened form no longer performs red-flag screening.** The page-one 999 and
+  "contact the team today" boxes are now the only escalation guidance in the form.
+
 ### 2. The QR target must be publicly reachable
 The QR encodes a hosted copy of the web form. A scanned link cannot prompt for a
 sign-in, so the target must open for anyone. If the page is private or access
